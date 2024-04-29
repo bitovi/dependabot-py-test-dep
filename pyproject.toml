@@ -8,5 +8,5 @@ version = "1.0.40"
 description = "Agent's data model"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = [  # Required dependencies go here, like requirements.txt
+dependencies = [
 ]
