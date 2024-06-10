@@ -1,6 +1,7 @@
 name: Publish to PyPI
 
 on:
+  repository_dispatch:
   push:
     tags:
       - 'v*.*.*'
@@ -10,11 +11,15 @@ permissions: write-all
 jobs:
     publish:
         runs-on: ubuntu-latest
+        permissions:
+          contents: write
+          issues: write
+          packages: write
         steps:
             - name: publish-pypi
               uses: bitovi/github-actions-publish-github-pypi@main
               with:
-                github-token: ${{ secrets.PYPI_GITHUB_TOKEN }}
+                github-token: ${{ github.token }}
                 pypi-github-org: bitovi
                 pypi-github-repo: PyPI
                 pypi-github-workflow-ref: initial-working
